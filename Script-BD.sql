@@ -7,9 +7,10 @@ USE SIARTEC;
 *******************
 Tabla donde se registrarán todos los usuarios para el acceso al sistema.
 */
-CREATE TABLE USUARIO (
+CREATE TABLE ADMINISTRADORES (
     `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `usuario` varchar(50) NOT NULL UNIQUE,
+    `nombre` varchar(100), /*Nombres y apellidos del administrador*/
     `contrasenia` varchar(60) NOT NULL,
     `estado` int(1) UNSIGNED NOT NULL, /*Estado del registro: 1 (Activo) y 0 (Desactivado)*/
     `usuarioCreacion` varchar(20) NOT NULL , /*Campo auditoria*/
@@ -190,3 +191,15 @@ CREATE TABLE DEVOLUCION(
     
     FOREIGN KEY(`idPrestamo`) REFERENCES PRESTAMO(`id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+
+
+/*NOTAS*/
+/*
+1) Los registros no se eliminan, sóle cambia el estado a cero (0). Luego un triger validará cada tabla la existencia de registros con el dicho estado
+    para luego llevarlos a otra tabla.
+
+
+
+
+*/

@@ -101,7 +101,10 @@ function enviaDataAjax(datos){
                 if(respuesta.mensaje === "correcto"){
                     //Mandamos mensaje.
                     swal("Correcto!", "Login correcto", "success");
-                    window.location.href = 'admin/admin-area.php';
+                    window.setTimeout(function(){
+                        window.location.href = 'admin/admin-area.php';
+                    }, 2000); //2 segundos
+                    
                 } else {
                     swal("Error!", respuesta.mensaje, "error");
                 }

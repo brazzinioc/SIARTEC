@@ -18,12 +18,10 @@ if($accion === "registrar"){
     include '../funciones/dbConexion.php';
         //Insertamos a la BD.
         try {
-        
-            
-
+    
             $usuarioCreacion = "system";
 
-            $statement = $conn->prepare("INSERT INTO USUARIO(usuario, contrasenia, estado, usuarioCreacion, horaCreacion, fechaCreacion, usuarioModificacion,
+            $statement = $conn->prepare("INSERT INTO ADMINISTRADORES(usuario, contrasenia, estado, usuarioCreacion, horaCreacion, fechaCreacion, usuarioModificacion,
                                                             horaModificacion, fechaModificacion) 
                                                             VALUES (?,?,1,?, CURRENT_TIME(), CURRENT_DATE(), ? , CURRENT_TIME(), CURRENT_DATE())");
 
@@ -61,11 +59,11 @@ if($accion === 'ingresar'){
     include '../funciones/dbConexion.php';
 
     try {
-        $statement = $conn->prepare("SELECT usuario, id, contrasenia FROM USUARIO WHERE usuario = ?");
+        $statement = $conn->prepare("SELECT usuario, id, nombre, contrasenia FROM ADMINISTRADORES WHERE usuario = ?");
         $statement->bind_param('s', $usuario);
         $statement->execute();
         
-        $statement->bind_result($nombre_usuario, $id_usuario, $contrasenia_usuario); //Captura y almacena los datos consultados en el SELECT
+        $statement->bind_result($nombre_usuario, $id_usuario, $nombreApellido_usuario, $contrasenia_usuario); //Captura y almacena los datos consultados en el SELECT
         $statement->fetch();
         
         //Valida si existe el usuario.
@@ -78,6 +76,7 @@ if($accion === 'ingresar'){
                 session_start();
                 $_SESSION['usuario'] = $nombre_usuario;
                 $_SESSION['id'] = $id_usuario;
+                $_SESSION['nombreApellido'] = $nombreApellido_usuario;
                 $_SESSION['login'] = true;
 
                 $respuesta = array(

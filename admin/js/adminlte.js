@@ -1003,7 +1003,7 @@ throw new Error('AdminLTE requires jQuery')
  */
 +function ($) {
   'use strict';
-
+  console.log("Hola desde la función tree");
   var DataKey = 'lte.tree';
 
   var Default = {
