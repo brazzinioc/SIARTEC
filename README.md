@@ -15,3 +15,6 @@ Aplicación web que automatiza el registro de préstamo y devolución de equipos
 
 ### Registrarse  
 ![Registrarse](Screenshots/SIARTEC-Crear-Cuenta.png)
+
+### Módulo de Reporte gráfico  
+![ModuloReporteGrafico](Screenshots/SIARTEC-ReporteGrafico.png)
