@@ -130,7 +130,8 @@ CREATE TABLE GRADO (
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 
- INSERT INTO GRADO VALUES (NULL, 1,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
+ INSERT INTO GRADO VALUES (NULL, 0,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
+                          (NULL, 1,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
                           (NULL, 2,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
                           (NULL, 3,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
                           (NULL, 4,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
@@ -167,7 +168,8 @@ INSERT INTO SECCION VALUES (NULL, 'A', 1, 'system', CURRENT_TIME(), CURRENT_DATE
                            (NULL, 'E', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
                            (NULL, 'F', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
                            (NULL, 'G', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
-                           (NULL, 'H', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() );
+                           (NULL, 'H', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
+                           (NULL, 'X', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() );
 
 /*PRESTAMO
 **********
