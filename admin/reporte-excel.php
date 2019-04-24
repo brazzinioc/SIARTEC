@@ -75,11 +75,7 @@ if(isset($_GET['respuesta'])){
                     <?php 
                         if( $respuesta === "error"){
                           echo "<p class='mensaje-reporte text-danger'> <br><br> No existe registros en el rango de fechas ingresadas.</p>";
-                        } else if ( $respuesta === "correcto"){
-                          echo "<p class='mensaje-reporte text-danger'> <br><br> Reporte descargado correctamente.</p>";
-                        } else {
-                          echo "<p class='mensaje-reporte text-danger'> <br><br> $respuesta </p>";
-                        }
+                        } 
                     ?>
                 </div>
 

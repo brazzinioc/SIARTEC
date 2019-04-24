@@ -12,9 +12,9 @@
 <!-- jQuery 3 -->
 <script src="js/jquery.min.js"></script>
 
-<!-- <script src="js/jquery-ui.min.js"></script> -->
+<script src="js/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<!--<script>
+<script>
   $.widget.bridge('uibutton', $.ui.button);
 </script>
 

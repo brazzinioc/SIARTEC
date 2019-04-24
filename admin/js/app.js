@@ -197,7 +197,7 @@ $(document).ready(function(){
       
         //Gráfico del TOTAL de Préstamos por tipo de usuario.
         $.getJSON('includes/servicios/servicio-prestamo-total-tipo-usuario.php', function(respuesta){
-          console.log("adjsad");
+      
           if(respuesta.datos == '0'){
             //Si no existe registros del día.Mostramos un mensaje
             $('#prestamoTotalTipoUsuario')[0].innerHTML = '<p style="text-align:center; padding-top: 100px;" class="text-danger"> No hay registros en la base de datos para mostrar el gráfico.</p>';

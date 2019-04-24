@@ -1,0 +1,9 @@
+#Restricción de acceso a las carpetas internas.
+Options All -Indexes
+
+
+#Redirección de Errores.
+ErrorDocument 500 /SIARTEC/error.php
+ErrorDocument 401 /SIARTEC/error.php
+ErrorDocument 403 /SIARTEC/error.php
+ErrorDocument 404 /SIARTEC/error.php

@@ -112,7 +112,6 @@
                 generaReportePrestamosPorDevolver($resultado, $nombreReporte);
             }
 
-          
 
         } else {
             $respuesta = array(
