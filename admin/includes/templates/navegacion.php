@@ -5,7 +5,20 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <?php
+            require_once('includes/funciones/funciones.php');
+
+            if(!isset($_SESSION)) { 
+              session_start();
+              $usuario = $_SESSION['usuario'];
+            } else {
+              $usuario = $_SESSION['usuario'];
+            }
+
+            $imagenUsuario = extraeImagenUsuario($usuario) -> fetch_assoc();
+
+          ?>
+          <img src="img/administradores/<?php echo $imagenUsuario['urlImagen']; ?>" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>
@@ -33,7 +46,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-home"></i> Dashboard </a></li>
+            <li><a href="dashboard.php"><i class="fa fa-home"></i> Dashboard </a></li>
           </ul>
         </li>
 
@@ -46,7 +59,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-list-ul"></i> Ver todos</a></li>
+            <li><a href="lista-prestamo.php"><i class="fa fa-list-ul"></i> Ver todos</a></li>
             <li><a href="crear-prestamo.php"><i class="fa fa-plus-circle"></i> Agregar </a></li>
           </ul>
         </li>
@@ -60,8 +73,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-list-ul"></i> Ver todos</a></li>
-            <li><a href="#"><i class="fa fa-plus-circle"></i> Agregar </a></li>
+            <li><a href="lista-devolucion.php"><i class="fa fa-list-ul"></i> Ver todos</a></li>
+            <li><a href="crear-devolucion.php"><i class="fa fa-plus-circle"></i> Agregar </a></li>
           </ul>
         </li>
 
@@ -88,8 +101,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-list-ul"></i> Ver todos</a></li>
-            <li><a href="#"><i class="fa fa-plus-circle"></i> Agregar </a></li>
+            <li><a href="lista-docente.php"><i class="fa fa-list-ul"></i> Ver todos</a></li>
+            <li><a href="crear-docente.php"><i class="fa fa-plus-circle"></i> Agregar </a></li>
           </ul>
         </li>
 
@@ -102,8 +115,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-list-ul"></i> Ver todos</a></li>
-            <li><a href="#"><i class="fa fa-plus-circle"></i> Agregar </a></li>
+            <li><a href="lista-administrativo.php"><i class="fa fa-list-ul"></i> Ver todos</a></li>
+            <li><a href="crear-administrativo.php"><i class="fa fa-plus-circle"></i> Agregar </a></li>
           </ul>
         </li>
 
@@ -115,8 +128,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-pie-chart"></i> Gráficos </a></li>
-            <li><a href="#"><i class="fa fa-download"></i> Descargar en Excel </a></li>
+            <li><a href="reporte-grafico.php"><i class="fa fa-pie-chart"></i> Gráficos </a></li>
+            <li><a href="reporte-excel.php"><i class="fa fa-download"></i> Descargar en Excel </a></li>
           </ul>
         </li>
 
@@ -129,8 +142,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="crear-administrador.php"><i class="fa fa-list-ul"></i> Ver todos</a></li>
-            <li><a href="#"><i class="fa fa-plus-circle"></i> Agregar </a></li>
+            <li><a href="lista-administrador.php"><i class="fa fa-list-ul"></i> Ver todos</a></li>
+            <li><a href="crear-administrador.php"><i class="fa fa-plus-circle"></i> Agregar </a></li>
           </ul>
         </li>
 
@@ -142,19 +155,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-database"></i> Base de Datos </a></li>
-          </ul>
-        </li>
-
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-wrench"></i> <span>Soporte</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-phone-square"></i> Contactar </a></li>
+            <li><a href="#" id="mantenimiento-bd"><i class="fa fa-database"></i> Base de Datos </a></li>
           </ul>
         </li>
       </ul>

@@ -28,7 +28,7 @@
     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
         <div class="inner">
-          <h3 class="masthead-brand">SIARTEC</h3>
+          <h3 class="masthead-brand"> <a href="index.php"> SIARTEC </a> </h3>
           <nav class="nav nav-masthead justify-content-center">
             <a class="nav-link" id="inicio" href="index.php">Inicio</a>
             <a class="nav-link" id="soporte" href="soporte.php">Soporte</a>

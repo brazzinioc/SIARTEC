@@ -9,7 +9,7 @@ include ('includes/templates/barra.php');
 
 include ('includes/templates/navegacion.php');
 
-$dni =  desencriptaDato($_GET['dni']);
+$id =  desencriptaDato($_GET['id']);
 
 ?>
 
@@ -30,7 +30,8 @@ $dni =  desencriptaDato($_GET['dni']);
           <h3 class="box-title">Datos del alumno</h3>
         </div>
         <?php
-          $alumno = extraeAlumno($dni)->fetch_assoc();        
+        
+          $alumno = extraeAlumno($id)->fetch_assoc();        
         ?>
             <form role="form" name="guardar-registro" id="guardar-registro" method="POST" action="includes/modelos/modelo-alumno.php"> 
                   <div class="box-body">
@@ -55,9 +56,8 @@ $dni =  desencriptaDato($_GET['dni']);
                         <option> - Seleccione -</option>
                         <?php 
                           $tipoUsuarios = extraeTipoUsuario();
-                          if($tipoUsuarios -> num_rows > 0){
                             foreach($tipoUsuarios as $tipoUsuario ):
-                              if($alumno['id'] == $tipoUsuario['id']){
+                              if($tipoUsuario['id'] === $alumno['idTipoUsuario'] ){
                           ?>
                               <option selected value="<?php echo $tipoUsuario['id']; ?>"> <?php echo $tipoUsuario['tipo']; ?></option>;
                           <?php
@@ -67,7 +67,6 @@ $dni =  desencriptaDato($_GET['dni']);
                           <?php
                               }
                             endforeach;
-                          }
                         ?>
                       </select>
                     </div>
@@ -84,6 +83,7 @@ $dni =  desencriptaDato($_GET['dni']);
 
                   <div class="box-footer">
                     <input type="hidden" name="accion" value="actualizar">
+                    <input type="hidden" name="id" value="<?php echo $alumno['id'];?>">
                     <button type="submit" class="btn btn-primary" id="actualizar_registro_alumno">Añadir</button>
                   </div>
             </form>   

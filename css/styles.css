@@ -93,6 +93,10 @@ body {
   padding-bottom: .2em;
 }
 
+.masthead-brand a {
+  text-decoration: none;
+}
+
 .nav-masthead .nav-link {
   padding: .25rem 0;
   font-weight: 700;

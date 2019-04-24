@@ -12,6 +12,7 @@ CREATE TABLE ADMINISTRADORES (
     `usuario` varchar(50) NOT NULL UNIQUE,
     `nombre` varchar(100), /*Nombres y apellidos del administrador*/
     `contrasenia` varchar(60) NOT NULL,
+    `urlImagen` varchar(100),
     `estado` int(1) UNSIGNED NOT NULL, /*Estado del registro: 1 (Activo) y 0 (Desactivado)*/
     `usuarioCreacion` varchar(20) NOT NULL , /*Campo auditoria*/
     `horaCreacion` time NOT NULL, /*Campo auditoria*/
@@ -39,13 +40,19 @@ CREATE TABLE TIPO_USUARIO (
     `fechaModificacion` date NOT NULL /*Campo auditoria*/
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
+INSERT INTO TIPO_USUARIO VALUES('', 'Alumno', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE());
+INSERT INTO TIPO_USUARIO VALUES('', 'Docente', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE());
+INSERT INTO TIPO_USUARIO VALUES('', 'Administrativo', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE());
+
+
 
 /*ALUMNO
 ********
 Tabla donde se registrarán todos los alumnos de la institución.
 */
 CREATE TABLE ALUMNO (
-    `dni` varchar(8) NOT NULL PRIMARY KEY,
+    `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `dni` varchar(8) NOT NULL UNIQUE,
     `nombres` varchar(60) NOT NULL,
     `apellidos` varchar(60) NOT NULL,
     `tipoUsuario` int(11) UNSIGNED NOT NULL, /* FK */
@@ -66,7 +73,8 @@ CREATE TABLE ALUMNO (
 Tabla donde se registrarán todos los docentes de la institución.
 */
 CREATE TABLE DOCENTE (
-    `dni` varchar(8) NOT NULL PRIMARY KEY,
+    `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `dni` varchar(8) NOT NULL UNIQUE,
     `nombres` varchar(60) NOT NULL,
     `apellidos` varchar(60) NOT NULL,
     `tipoUsuario` int(11) UNSIGNED NOT NULL, /* FK */
@@ -87,7 +95,8 @@ CREATE TABLE DOCENTE (
 Tabla donde se registrarán todos los trabajadores administrativos de la institución.
 */
 CREATE TABLE ADMINISTRATIVO (
-    `dni` varchar(8) NOT NULL PRIMARY KEY,
+    `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `dni` varchar(8) NOT NULL UNIQUE,
     `nombres` varchar(60) NOT NULL,
     `apellidos` varchar(60) NOT NULL,
     `tipoUsuario` int(11) UNSIGNED NOT NULL, /* FK */
@@ -121,6 +130,20 @@ CREATE TABLE GRADO (
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 
+ INSERT INTO GRADO VALUES ('', 1,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
+                          ('', 2,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
+                          ('', 3,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
+                          ('', 4,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
+                          ('', 5,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
+                          ('', 6,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
+                          ('', 7,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
+                          ('', 8,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
+                          ('', 9,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
+                          ('', 10,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE());
+ 
+
+
+
 /*SECCION
 *********
 Tabla donde se registrarán todos los grado de la institución.
@@ -137,7 +160,14 @@ CREATE TABLE SECCION (
     `fechaModificacion` date NOT NULL /*Campo auditoria*/
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-
+INSERT INTO SECCION VALUES ('', 'A', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
+                           ('', 'B', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
+                           ('', 'C', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
+                           ('', 'D', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
+                           ('', 'E', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
+                           ('', 'F', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
+                           ('', 'G', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
+                           ('', 'H', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() );
 
 /*PRESTAMO
 **********
@@ -147,13 +177,13 @@ CREATE TABLE PRESTAMO(
     `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `fecha` date NOT NULL, /*Fecha en que se realizó el préstamo.*/
     `hora` time NOT NULL, /*Hora en que se realizó el préstamo.*/
-    `dniAlumno` varchar(8) NOT NULL, /* FK */
-    `dniAdministrativo` varchar(8) NOT NULL, /* FK */
-    `dniDocente` varchar(8) NOT NULL, /* FK */
+    `dniUsuario` varchar(8) NOT NULL,
+    `idTipoUsuario` int(11) UNSIGNED, /* FK */
     `idGrado` int(11) UNSIGNED NOT NULL, /* FK */
     `idSeccion` int(11) UNSIGNED NOT NULL, /* FK */
     `listaEquipos` varchar(500) NOT NULL, /*Lista de equipos que se prestó.*/
     `observacion` varchar(200) NOT NULL, /* Observación del préstamo realizado.*/
+    `estadoDevolucion` int(1) UNSIGNED NOT NULL, /* Estado de la devolución: 0 no devolución. 1 Devuelto.*/
     `estado` int(1) UNSIGNED NOT NULL, /*Estado del registro: 1 (Activo) y 0 (Desactivado)*/
     `usuarioCreacion` varchar(20) NOT NULL, /*Campo auditoria*/
     `horaCreacion` time NOT NULL, /*Campo auditoria*/
@@ -162,9 +192,7 @@ CREATE TABLE PRESTAMO(
     `horaModificacion` time NOT NULL, /*Campo auditoria*/
     `fechaModificacion` date NOT NULL, /*Campo auditoria*/
 
-    FOREIGN KEY(`dniAlumno`) REFERENCES ALUMNO(`dni`),
-    FOREIGN KEY(`dniAdministrativo`) REFERENCES ADMINISTRATIVO(`dni`),
-    FOREIGN KEY(`dniDocente`) REFERENCES DOCENTE(`dni`),
+    FOREIGN KEY( `idTipoUsuario`) REFERENCES TIPO_USUARIO(`id`),
     FOREIGN KEY(`idGrado`) REFERENCES GRADO(`id`),
     FOREIGN KEY(`idSeccion`) REFERENCES SECCION(`id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
@@ -192,14 +220,3 @@ CREATE TABLE DEVOLUCION(
     FOREIGN KEY(`idPrestamo`) REFERENCES PRESTAMO(`id`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-
-
-/*NOTAS*/
-/*
-1) Los registros no se eliminan, sóle cambia el estado a cero (0). Luego un triger validará cada tabla la existencia de registros con el dicho estado
-    para luego llevarlos a otra tabla.
-
-
-
-
-*/

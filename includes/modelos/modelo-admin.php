@@ -59,11 +59,11 @@ if($accion === 'ingresar'){
     include '../funciones/dbConexion.php';
 
     try {
-        $statement = $conn->prepare("SELECT usuario, id, nombre, contrasenia FROM ADMINISTRADORES WHERE usuario = ?");
+        $statement = $conn->prepare("SELECT usuario, id, nombre, contrasenia, fechaCreacion FROM ADMINISTRADORES WHERE usuario = ?");
         $statement->bind_param('s', $usuario);
         $statement->execute();
         
-        $statement->bind_result($nombre_usuario, $id_usuario, $nombreApellido_usuario, $contrasenia_usuario); //Captura y almacena los datos consultados en el SELECT
+        $statement->bind_result($nombre_usuario, $id_usuario, $nombreApellido_usuario, $contrasenia_usuario, $fecha_creacion); //Captura y almacena los datos consultados en el SELECT
         $statement->fetch();
         
         //Valida si existe el usuario.
@@ -78,6 +78,7 @@ if($accion === 'ingresar'){
                 $_SESSION['id'] = $id_usuario;
                 $_SESSION['nombreApellido'] = $nombreApellido_usuario;
                 $_SESSION['login'] = true;
+                $_SESSION['fechaCreacion'] = $fecha_creacion;
 
                 $respuesta = array(
                     'mensaje' => 'correcto',

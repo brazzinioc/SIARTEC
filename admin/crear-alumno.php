@@ -50,13 +50,17 @@ include ('includes/templates/navegacion.php');
                         <option> - Seleccione -</option>
                         <?php 
                           $tipoUsuarios = extraeTipoUsuario();
-                          if($tipoUsuarios -> num_rows > 0){
-                            foreach($tipoUsuarios as $tipoUsuario ):
+                            foreach( $tipoUsuarios as $tipoUsuario ):
+                              if($tipoUsuario['tipo'] === "Alumno"){
+                          ?>  
+                                <option selected value="<?php echo $tipoUsuario['id']; ?>"> <?php echo $tipoUsuario['tipo']; ?></option>;  
+                          <?php 
+                              } else {
                           ?>
                               <option value="<?php echo $tipoUsuario['id']; ?>"> <?php echo $tipoUsuario['tipo']; ?></option>;
                           <?php
+                              }
                             endforeach;
-                          }
                         ?>
                       </select>
                     </div>

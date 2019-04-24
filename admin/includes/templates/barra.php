@@ -27,16 +27,16 @@
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
-              <span class="label label-warning">10</span>
+              <span class="label label-warning"> X </span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header">Tienes 1 notificaciones.</li>
+              <li class="header">Tienes X notificaciones <small> <b> Funcionalidad en próxima actualización. </b> </small>.</li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
                   <li>
                     <a href="#">
-                      <i class="fa fa-users text-aqua"></i> Tiene 5 equipos por devolver
+                      <i class="fa fa-laptop text-aqua"></i> Tiene X equipos por devolver
                     </a>
                   </li>
                 </ul>
@@ -47,7 +47,21 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="img/user2-160x160.jpg" class="user-image" alt="User Image">
+                <?php
+                
+                require_once('includes/funciones/funciones.php');
+
+                if(!isset($_SESSION)) { 
+                  session_start();
+                  $usuario = $_SESSION['usuario'];
+                } else {
+                  $usuario = $_SESSION['usuario'];
+                }
+
+                $imagenUsuario = extraeImagenUsuario($usuario) -> fetch_assoc();
+
+              ?> 
+              <img src="img/administradores/<?php echo $imagenUsuario['urlImagen']; ?>" class="user-image" alt="User Image">
               <span class="hidden-xs">
                  <?php 
                     if(!isset($_SESSION)) { 
@@ -62,7 +76,7 @@
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="img/administradores/<?php echo $imagenUsuario['urlImagen']; ?>" class="img-circle" alt="User Image">
                 <p>
                   <?php 
                     if(!isset($_SESSION)) { 
@@ -72,13 +86,13 @@
                         echo $_SESSION['nombreApellido'];
                     }
                  ?>
-                  <small>Member since Nov. 2012</small>
+                  <small> Usuario desde <?php echo $_SESSION['fechaCreacion'];?></small>
                 </p>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Perfil</a>
+                  <a href="editar-administrador.php?id=<?php echo encriptaDato( $_SESSION['id']);?>" class="btn btn-default btn-flat">Perfil</a>
                 </div>
                 <div class="pull-right">
                   <a href="../index.php?cerrar_sesion=true" class="btn btn-default btn-flat">Cerrar sesión</a>

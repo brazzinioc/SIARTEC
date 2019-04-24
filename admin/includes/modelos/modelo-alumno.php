@@ -1,6 +1,6 @@
 <?php 
 
-include_once '../../../includes/funciones/dbConexion.php';
+require_once '../../../includes/funciones/dbConexion.php';
 
 $accion = filter_var($_POST['accion'], FILTER_SANITIZE_STRING );
 
@@ -10,7 +10,7 @@ $apellidos = filter_var($_POST['apellidos'], FILTER_SANITIZE_STRING);
 $tipoUsuario = filter_var($_POST['tipoUsuario'], FILTER_VALIDATE_INT);
 $estado = filter_var($_POST['estado'], FILTER_VALIDATE_INT);
 
-$id = filter_var($_POST['id'], FILTER_SANITIZE_STRING); //ID = DNI para eliminar registro.
+$id = filter_var($_POST['id'], FILTER_VALIDATE_INT); //ID para EDITAR y ELIMINAR registro.
 
 session_start();
 $usuarioSesion = $_SESSION['usuario'];
@@ -67,10 +67,10 @@ if($accion === "actualizar"){
 
     try {
 
-        $stmt = $conn -> prepare("UPDATE ALUMNO SET nombres = ? , apellidos = ? , tipoUsuario = ?, estado = ? , 
-                                usuarioModificacion = ? , horaModificacion = CURRENT_TIME(), fechaModificacion = CURRENT_DATE() WHERE dni = ?");
+        $stmt = $conn -> prepare("UPDATE ALUMNO SET dni = ?, nombres = ? , apellidos = ? , tipoUsuario = ?, estado = ? , 
+                                usuarioModificacion = ? , horaModificacion = CURRENT_TIME(), fechaModificacion = CURRENT_DATE() WHERE id = ?");
         
-        $stmt -> bind_param("ssiiss", $nombres, $apellidos, $tipoUsuario, $estado, $usuarioSesion, $dni);
+        $stmt -> bind_param("sssiisi", $dni, $nombres, $apellidos, $tipoUsuario, $estado, $usuarioSesion, $id);
         $stmt -> execute();
 
         if( $stmt -> affected_rows > 0 ) {
@@ -106,10 +106,9 @@ if($accion === "eliminar"){
 
     try {
 
-        $stmt = $conn -> prepare("UPDATE ALUMNO SET estado = 0, usuarioModificacion = ?, horaModificacion = CURRENT_TIME(), fechaModificacion = CURRENT_DATE()
-        WHERE dni = ?  ");
+        $stmt = $conn -> prepare(" DELETE FROM ALUMNO WHERE id = ? ");
 
-        $stmt -> bind_param("ss", $usuarioSesion, $id);
+        $stmt -> bind_param("i", $id);
 
         $stmt -> execute();
 
