@@ -40,9 +40,9 @@ CREATE TABLE TIPO_USUARIO (
     `fechaModificacion` date NOT NULL /*Campo auditoria*/
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-INSERT INTO TIPO_USUARIO VALUES('', 'Alumno', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE());
-INSERT INTO TIPO_USUARIO VALUES('', 'Docente', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE());
-INSERT INTO TIPO_USUARIO VALUES('', 'Administrativo', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE());
+INSERT INTO TIPO_USUARIO VALUES(NULL, 'Alumno', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE());
+INSERT INTO TIPO_USUARIO VALUES(NULL, 'Docente', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE());
+INSERT INTO TIPO_USUARIO VALUES(NULL, 'Administrativo', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE());
 
 
 
@@ -130,16 +130,16 @@ CREATE TABLE GRADO (
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 
- INSERT INTO GRADO VALUES ('', 1,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
-                          ('', 2,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
-                          ('', 3,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
-                          ('', 4,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
-                          ('', 5,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
-                          ('', 6,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
-                          ('', 7,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
-                          ('', 8,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
-                          ('', 9,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
-                          ('', 10,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE());
+ INSERT INTO GRADO VALUES (NULL, 1,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
+                          (NULL, 2,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
+                          (NULL, 3,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
+                          (NULL, 4,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
+                          (NULL, 5,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
+                          (NULL, 6,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
+                          (NULL, 7,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
+                          (NULL, 8,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
+                          (NULL, 9,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE()),
+                          (NULL, 10,1,'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE());
  
 
 
@@ -160,14 +160,14 @@ CREATE TABLE SECCION (
     `fechaModificacion` date NOT NULL /*Campo auditoria*/
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
-INSERT INTO SECCION VALUES ('', 'A', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
-                           ('', 'B', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
-                           ('', 'C', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
-                           ('', 'D', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
-                           ('', 'E', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
-                           ('', 'F', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
-                           ('', 'G', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
-                           ('', 'H', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() );
+INSERT INTO SECCION VALUES (NULL, 'A', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
+                           (NULL, 'B', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
+                           (NULL, 'C', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
+                           (NULL, 'D', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
+                           (NULL, 'E', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
+                           (NULL, 'F', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
+                           (NULL, 'G', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() ),
+                           (NULL, 'H', 1, 'system', CURRENT_TIME(), CURRENT_DATE(), 'system', CURRENT_TIME(), CURRENT_DATE() );
 
 /*PRESTAMO
 **********
